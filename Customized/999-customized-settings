@@ -1,0 +1,74 @@
+#!/bin/sh
+
+uci -q set luci.main.lang=zh_cn
+uci -q commit luci
+
+uci -q batch <<-EOF
+	set system.@system[0].timezone='CST-8'
+	set system.@system[0].zonename='Asia/Shanghai'
+
+	delete system.ntp.server
+	add_list system.ntp.server='ntp1.aliyun.com'
+	add_list system.ntp.server='ntp.tencent.com'
+	add_list system.ntp.server='ntp.ntsc.ac.cn'
+	add_list system.ntp.server='time.ustc.edu.cn'
+EOF
+uci -q commit system
+
+uci -q set fstab.@global[0].anon_mount=1
+uci -q commit fstab
+#################### wireless
+if [ "$(uci -q get wireless.@wifi-device[0].band)" == "2g" ] ;then
+		# WIFI信道
+		uci -q set wireless.@wifi-device[0].channel='3'
+		uci -q set wireless.@wifi-device[1].channel='36'
+		# SSID
+		uci -q set wireless.@wifi-iface[0].ssid='FK20100010'
+		uci -q set wireless.@wifi-iface[1].ssid='FK20100010_5G'
+	else
+		# WIFI信道
+		uci -q set wireless.@wifi-device[0].channel='36'
+		uci -q set wireless.@wifi-device[1].channel='3'
+		# SSID
+		uci -q set wireless.@wifi-iface[0].ssid='FK20100010_5G'
+		uci -q set wireless.@wifi-iface[1].ssid='FK20100010'
+fi
+# WIFI MIMO
+uci -q set wireless.@wifi-device[0].mu_beamformer='1'
+uci -q set wireless.@wifi-device[1].mu_beamformer='1'
+# WIFI地区
+uci -q set wireless.@wifi-device[0].country='CN'
+uci -q set wireless.@wifi-device[1].country='CN'
+# WIFI加密算法
+uci -q set wireless.@wifi-iface[0].encryption='psk2+ccmp'
+uci -q set wireless.@wifi-iface[1].encryption='psk2+ccmp'
+# WIFI密码
+uci -q set wireless.@wifi-iface[0].key='qwerqwe123@'
+uci -q set wireless.@wifi-iface[1].key='qwerqwe123@'
+#默认打开WIFI
+uci -q set wireless.@wifi-device[0].disabled=0
+uci -q set wireless.@wifi-device[1].disabled=0
+# 提交更改
+uci -q commit wireless
+#lan ip
+uci -q set network.lan.ipaddr=192.168.10.1
+uci -q commit network
+
+#sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/xunlei.lua
+sed -i 's/services/nas/g'  /usr/share/luci/menu.d/luci-app-samba4.json
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -i '/mihomo/d' /etc/opkg/distfeeds.conf
+sed -i '/_core/d' /etc/opkg/distfeeds.conf
+sed -i '/nss_packages/d' /etc/opkg/distfeeds.conf
+sed -i '/sqm_scripts_nss/d' /etc/opkg/distfeeds.conf
+
+
+sed -i 's~root::0:0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
+sed -i 's~root:::0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
+
+sed -i '/check_signature/d' /etc/opkg.conf
+
+sed -i '/option disabled/d' /etc/config/wireless
+sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
+
+exit 0
