@@ -7,7 +7,7 @@ on:
       model:
         required: true
         description: 路由器型号
-        default: jdcloud_ax1800-pro
+        default: jdcloud_re-ss-01
 
       build_mod:
         required: true
@@ -48,8 +48,8 @@ jobs:
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
-          retain_days: 0
-          keep_minimum_runs: 0
+          retain_days: 7
+          keep_minimum_runs: 1
           delete_workflow_pattern: Auto-Clean.yml
   
   build:
