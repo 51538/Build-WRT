@@ -89,7 +89,7 @@ jobs:
         sudo -E apt -yqq clean
         sudo -E apt -yqq install dos2unix
         sudo -E apt -yqq install libfuse-dev
-        sudo apt install -y $(cat depends)
+        sudo -E apt -yqq install $(cat depends)
         sudo -E systemctl daemon-reload
         sudo -E timedatectl set-timezone "Asia/Shanghai"
 
