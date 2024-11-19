@@ -50,7 +50,7 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 7
           keep_minimum_runs: 1
-          delete_workflow_pattern: Auto-Clean.yml
+          #delete_workflow_pattern: Auto-Clean.yml
   
   build:
     #runs-on: ${{ inputs.runs-on }}
