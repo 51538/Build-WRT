@@ -61,6 +61,12 @@ sed -i '/mihomo/d' /etc/opkg/distfeeds.conf
 sed -i '/_core/d' /etc/opkg/distfeeds.conf
 sed -i '/nss_packages/d' /etc/opkg/distfeeds.conf
 sed -i '/sqm_scripts_nss/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/apk/repositories
+sed -i '/mihomo/d' /etc/apk/repositories
+sed -i '/_core/d' /etc/apk/repositories
+sed -i '/nss_packages/d' /etc/apk/repositories
+sed -i '/sqm_scripts_nss/d' /etc/apk/repositories
+
 
 
 sed -i 's~root::0:0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
