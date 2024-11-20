@@ -50,27 +50,10 @@ cp -f $BASE_PATH/$BUILD_DIR/.config $FIRMWARE_DIR/123.config
 #\rm -f "$BASE_PATH/firmware/Packages.manifest" 2>/dev/null
 
 ##### 初始化一个标志变量 #####
-found=0
+# 获取文件名包含squashfs的文件的数量
+FILE_NUM=$(find "bin/targets" -type f -iname "*squashfs*" ! -path "*/packages/*" | grep -c "squashfs")
 
-# 使用一个临时文件来存储找到的文件路径（因为 -prune 和 -o 的组合可能直接输出目录）
-temp_file=$(mktemp)
-
-# 使用 find 命令查找包含 "squashfs" 的文件，同时排除包含 "packages" 的文件夹中的内容
-find "bin/targets" -type f -iname "*squashfs*" ! -path "*/packages/*" > "$temp_file"
-
-# 遍历临时文件中的路径，检查是否为文件并设置标志变量
-while read -r file; do
-    if [ -f "$file" ]; then
-        found=1
-        break
-    fi
-done < "$temp_file"
-
-# 删除临时文件
-rm "$temp_file"
-
-# 检查标志变量，如果没有找到文件则执行 make 命令
-if [ "$found" -eq 0 ]; then
+if [ "$FILE_NUM" -eq 0 ]; then
     rm -rf .config
     cat> .config <<EOF
 CONFIG_TARGET_${aa}=y
@@ -81,10 +64,10 @@ make defconfig
 make -j$(nproc)
 find "$TARGET_DIR" -type f \( -name "*.bin" -o -name "*.manifest" -o -name "*.buildinfo" -o -name "*squashfs*" \) -exec cp -f {} "$FIRMWARE_DIR/" \;
 cp -rf bin/packages $FIRMWARE_DIR/
-else
-    echo "Found files with 'squashfs' in their names (excluding folders with 'packages'). Skipping make command."
+	else 
+	exit 0
 fi
-#############
+##### END OF 初始化一个标志变量 #####
 
 for file in $FIRMWARE_DIR/*openwrt*; do
     mv "$file" "${file//openwrt/$BUILD_DIR}" 2>/dev/null
