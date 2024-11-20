@@ -64,8 +64,6 @@ make defconfig
 make -j$(nproc)
 find "$TARGET_DIR" -type f \( -name "*.bin" -o -name "*.manifest" -o -name "*.buildinfo" -o -name "*squashfs*" \) -exec cp -f {} "$FIRMWARE_DIR/" \;
 zip -r $FIRMWARE_DIR/packages.zip bin/packages 
-	else 
-	exit 0
 fi
 ##### END OF 初始化一个标志变量 #####
 
