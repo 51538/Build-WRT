@@ -73,8 +73,8 @@ for file in $FIRMWARE_DIR/*openwrt*; do
     mv "$file" "${file//openwrt/$BUILD_DIR}" 2>/dev/null
 done
 
-if [[ -f "${BUILD_MODEL}_${BUILD_DIR}_end" ]]; then
-   bash ${BUILD_MODEL}_${BUILD_DIR}_end
+if [[ -f "../${BUILD_MODEL}_${BUILD_DIR}_end" ]]; then
+   cd ../ && bash ${BUILD_MODEL}_${BUILD_DIR}_end
 fi
 
 exit 0
