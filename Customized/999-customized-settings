@@ -17,6 +17,39 @@ uci -q commit system
 
 uci -q set fstab.@global[0].anon_mount=1
 uci -q commit fstab
+
+#设置lan ip
+uci -q set network.lan.ipaddr=192.168.10.1
+uci -q commit network
+
+#sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/xunlei.lua
+sed -i 's/services/nas/g'  /usr/share/luci/menu.d/luci-app-samba4.json
+sed -i '/passwall/d' /etc/opkg/distfeeds.conf
+sed -i '/mihomo/d' /etc/opkg/distfeeds.conf
+sed -i '/_core/d' /etc/opkg/distfeeds.conf
+sed -i '/nss_packages/d' /etc/opkg/distfeeds.conf
+sed -i '/sqm_scripts_nss/d' /etc/opkg/distfeeds.conf
+sed -i '/passwall/d' /etc/apk/repositories
+sed -i '/mihomo/d' /etc/apk/repositories
+sed -i '/_core/d' /etc/apk/repositories
+sed -i '/nss_packages/d' /etc/apk/repositories
+sed -i '/sqm_scripts_nss/d' /etc/apk/repositories
+
+
+
+sed -i 's~root::0:0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
+sed -i 's~root:::0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
+
+sed -i '/check_signature/d' /etc/opkg.conf
+
+# 获取无线设备的数量
+RADIO_NUM=$(uci show wireless | grep -c "wifi-device")
+
+# 如果没有找到无线设备，直接退出
+if [ "$RADIO_NUM" -eq 0 ]; then
+	exit 0
+fi
+
 #################### wireless
 if [ "$(uci -q get wireless.@wifi-device[0].band)" == "2g" ] ;then
 		# WIFI信道
@@ -48,33 +81,8 @@ uci -q set wireless.@wifi-iface[1].key='qwerqwe123@'
 #默认打开WIFI
 uci -q set wireless.@wifi-device[0].disabled=0
 uci -q set wireless.@wifi-device[1].disabled=0
-# 提交更改
-uci -q commit wireless
-#lan ip
-uci -q set network.lan.ipaddr=192.168.10.1
-uci -q commit network
-
-#sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/xunlei.lua
-sed -i 's/services/nas/g'  /usr/share/luci/menu.d/luci-app-samba4.json
-sed -i '/passwall/d' /etc/opkg/distfeeds.conf
-sed -i '/mihomo/d' /etc/opkg/distfeeds.conf
-sed -i '/_core/d' /etc/opkg/distfeeds.conf
-sed -i '/nss_packages/d' /etc/opkg/distfeeds.conf
-sed -i '/sqm_scripts_nss/d' /etc/opkg/distfeeds.conf
-sed -i '/passwall/d' /etc/apk/repositories
-sed -i '/mihomo/d' /etc/apk/repositories
-sed -i '/_core/d' /etc/apk/repositories
-sed -i '/nss_packages/d' /etc/apk/repositories
-sed -i '/sqm_scripts_nss/d' /etc/apk/repositories
-
-
-
-sed -i 's~root::0:0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
-sed -i 's~root:::0:99999:7:::~root:$5$wWuQ48EcwP8fJ2Xq$GGvJHda1R2bYVNWbsG4lGS/Yn/kUxWDDLfYac9p9PI.:20019:0:99999:7:::~g' /etc/shadow
-
-sed -i '/check_signature/d' /etc/opkg.conf
-
-sed -i '/option disabled/d' /etc/config/wireless
-sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
+# 提交配置并重启网络服务
+uci commit wireless
+/etc/init.d/network restart
 
 exit 0
