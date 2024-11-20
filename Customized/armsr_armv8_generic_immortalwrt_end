@@ -1,6 +1,16 @@
+sudo apt-get update -y
+sudo apt-get full-upgrade -y
+# For Ubuntu-22.04
+sudo apt-get install -y $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
+
 git clone --depth 1 https://github.com/ophub/amlogic-s9xxx-openwrt.git
 mv firmware amlogic-s9xxx-openwrt/openwrt-armvirt
 cd amlogic-s9xxx-openwrt
-sudo ./remake -b s905x2 -k 6.x.y -a true
+cd openwrt-armvirt
+gzip -d *rootfs*
+tar -cvf rootfs.tar *rootfs* && rm -f *rootfs*.img
+gzip rootfs.tar
+cd -
+sudo ./remake -b s905x2 -k 6.6.1 -a true
 mv out ../firmware
 exit 0
