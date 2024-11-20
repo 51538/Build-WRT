@@ -11,6 +11,7 @@ gzip -d *rootfs*
 tar -cvf rootfs.tar *rootfs* && rm -f *rootfs*.img
 gzip rootfs.tar
 cd -
+mkdir -p openwrt/tmp/6.6.62/s905x2/rootfs/lib/modules
 sudo ./remake -b s905x2 -k 6.6.1 -a true
-mv out ../firmware
+sudo mv openwrt/out ../firmware
 exit 0
