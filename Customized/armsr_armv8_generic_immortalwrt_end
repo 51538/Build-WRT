@@ -1,0 +1,6 @@
+git clone --depth 1 https://github.com/ophub/amlogic-s9xxx-openwrt.git
+mv firmware amlogic-s9xxx-openwrt/openwrt-armvirt
+cd amlogic-s9xxx-openwrt
+sudo ./remake -b s905x2 -k 6.x.y -a true
+mv out ../firmware
+exit 0
