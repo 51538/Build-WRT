@@ -63,7 +63,7 @@ EOF
 make defconfig
 make -j$(nproc)
 find "$TARGET_DIR" -type f \( -name "*.bin" -o -name "*.manifest" -o -name "*.buildinfo" -o -name "*squashfs*" \) -exec cp -f {} "$FIRMWARE_DIR/" \;
-cp -rf bin/packages $FIRMWARE_DIR/
+zip -r $FIRMWARE_DIR/packages.zip bin/packages 
 	else 
 	exit 0
 fi
@@ -72,4 +72,9 @@ fi
 for file in $FIRMWARE_DIR/*openwrt*; do
     mv "$file" "${file//openwrt/$BUILD_DIR}" 2>/dev/null
 done
+
+if [[ -f "${BUILD_MODEL}_${BUILD_DIR}_end" ]]; then
+   bash ${BUILD_MODEL}_${BUILD_DIR}_end
+fi
+
 exit 0
