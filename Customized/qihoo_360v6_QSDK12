@@ -1,0 +1,4 @@
+cd QSDK12
+rm feeds.conf.default
+wget https://raw.githubusercontent.com/mapdio/360v6-QSDK/refs/heads/main/files/add_feeds.conf
+mv add_feeds.conf feeds.conf.default
