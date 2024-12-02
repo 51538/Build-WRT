@@ -29,11 +29,11 @@ sed -i '/mihomo/d' /etc/opkg/distfeeds.conf
 sed -i '/_core/d' /etc/opkg/distfeeds.conf
 sed -i '/nss_packages/d' /etc/opkg/distfeeds.conf
 sed -i '/sqm_scripts_nss/d' /etc/opkg/distfeeds.conf
-sed -i '/passwall/d' /etc/apk/repositories
-sed -i '/mihomo/d' /etc/apk/repositories
-sed -i '/_core/d' /etc/apk/repositories
-sed -i '/nss_packages/d' /etc/apk/repositories
-sed -i '/sqm_scripts_nss/d' /etc/apk/repositories
+sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
+sed -i '/mihomo/d' /etc/apk/repositories.d/distfeeds.list
+sed -i '/_core/d' /etc/apk/repositories.d/distfeeds.list
+sed -i '/nss_packages/d' /etc/apk/repositories.d/distfeeds.list
+sed -i '/sqm_scripts_nss/d' /etc/apk/repositories.d/distfeeds.list
 
 
 
