@@ -1,6 +1,0 @@
-cd immortalwrt
-echo "$(date +"%s")" >version.date
-sed -i '/$(curdir)\/compile:/c\$(curdir)/compile: package/opkg/host/compile' package/Makefile
-sed -i "s/DEFAULT_PACKAGES:=/DEFAULT_PACKAGES:=luci-app-switchtools luci-app-firewall luci-proto-wwan luci-app-upnp luci-app-syscontrol \
-luci-theme-teleofis luci-base luci-compat luci-lib-ipkg luci-lib-fs \
-coremark wget-ssl curl autocore htop nano zram-swap kmod-lib-zstd kmod-tcp-bbr bash openssh-sftp-server block-mount resolveip ds-lite swconfig luci-app-filemanager /" include/target.mk
