@@ -13,9 +13,17 @@ echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >
 echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
 #echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
 
-./scripts/feeds update passwall passwall2 passwall_packages
-./scripts/feeds install chinadns-ng luci-app-passwall luci-app-passwall2
-./scripts/feeds update -a && ./scripts/feeds install -a
+./scripts/feeds clean && ./scripts/feeds update -a
+./scripts/feeds install -a -f -p passwall_packages
+./scripts/feeds install luci-app-passwall luci-app-passwall2
+./scripts/feeds install -a
+
+#OpenWrt golang latest version
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+# 更新luci-app-dockerman
+rm -rf feeds/luci/applications/luci-app-dockerman
+git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman
 
 #添加自定义插件
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
@@ -34,6 +42,3 @@ sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.
 
 # 增固件连接数
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' package/base-files/files/etc/sysctl.conf
-# 更新luci-app-dockerman
-rm -rf feeds/luci/applications/luci-app-dockerman
-git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman
