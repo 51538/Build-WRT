@@ -1,0 +1,5 @@
+git clone -b main-nss https://github.com/qosmio/openwrt-ipq.git
+rm -rf immortalwrt/package/network/config/netifd
+rm -rf immortalwrt/package/network/config/wifi-scripts
+cp -rf openwrt-ipq/package/network/config/netifd immortalwrt/package/network/config/
+cp -rf openwrt-ipq/package/network/config/wifi-scripts immortalwrt/package/network/config/
