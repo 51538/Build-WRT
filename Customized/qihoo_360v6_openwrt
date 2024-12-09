@@ -1,3 +1,0 @@
-sed -i '/^#/d' feeds.conf.default
-sed -i '/luci/d' feeds.conf.default
-echo "src-git luci https://git.openwrt.org/project/luci.git" >> "feeds.conf.default"
