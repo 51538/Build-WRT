@@ -20,9 +20,11 @@ echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main"
 ./scripts/feeds install -a
 
 #run after ./scripts/feeds
-if [[ -f "../${BUILD_MODEL}_${BUILD_DIR}_after" ]]; then
-   bash ../${BUILD_MODEL}_${BUILD_DIR}_after
+cd ../
+if [[ -f "${BUILD_MODEL}_${BUILD_DIR}_after" ]]; then
+   bash ${BUILD_MODEL}_${BUILD_DIR}_after
 fi
+cd -
 
 #OpenWrt golang latest version
 rm -rf feeds/packages/lang/golang
