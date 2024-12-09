@@ -2,6 +2,7 @@
 
 BUILD_DIR=$(cat BUILD_DIR)
 BUILD_MODEL=$(cat BUILD_MODEL)
+#run before ./scripts/feeds
 if [[ -f "${BUILD_MODEL}_${BUILD_DIR}" ]]; then
    bash ${BUILD_MODEL}_${BUILD_DIR}
 fi
@@ -17,6 +18,11 @@ echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main"
 ./scripts/feeds install -a -f -p passwall_packages
 ./scripts/feeds install luci-app-passwall luci-app-passwall2
 ./scripts/feeds install -a
+
+#run after ./scripts/feeds
+if [[ -f "../${BUILD_MODEL}_${BUILD_DIR}_after" ]]; then
+   bash ../${BUILD_MODEL}_${BUILD_DIR}_after
+fi
 
 #OpenWrt golang latest version
 rm -rf feeds/packages/lang/golang
