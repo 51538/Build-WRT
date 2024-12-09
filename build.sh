@@ -29,7 +29,7 @@ if [[ "$DEVICE_NAME" != "jdcloud_ax1800-pro" ]] && [[ "$DEVICE_NAME" != "jdcloud
     sed -i '/\/etc\/shadow/d' $BASE_PATH/999-customized-settings
     chmod 775 $BASE_PATH/999-customized-settings
 fi
-
+chmod 775 $BASE_PATH/999-customized-settings
 cp -f $BASE_PATH/999-customized-settings $BASE_PATH/$BUILD_DIR/package/base-files/files/etc/uci-defaults
 
 TARGET_DIR="$BASE_PATH/$BUILD_DIR/bin/targets"
