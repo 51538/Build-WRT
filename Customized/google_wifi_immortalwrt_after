@@ -6,4 +6,4 @@ git clone https://github.com/sbwml/feeds_packages_net_samba4 immortalwrt/feeds/p
 sed -i '/FK20100010/d' build.sh
 sed -i "s/FK20100010/Google_WiFi/g" 999-customized-settings
 sed -i '/.key=/d' build.sh
-sed '/etc\\\/shadow/d' build.sh
+sed -i '/etc\\\/shadow/d' build.sh
