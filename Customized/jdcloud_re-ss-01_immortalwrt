@@ -1,2 +1,3 @@
 sed -i '/nss_packages/d' immortalwrt/feeds.conf.default
 sed -i '/sqm_scripts_nss/d' immortalwrt/feeds.conf.default
+rm -f jdcloud_re-ss-01.config
