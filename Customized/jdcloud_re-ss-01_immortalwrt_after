@@ -1,0 +1,3 @@
+cd immortalwrt
+rm -f package/firmware/ath11k-firmware/Makefile
+wget -P package/firmware/ath11k-firmware https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/master/package/firmware/ath11k-firmware/Makefile
