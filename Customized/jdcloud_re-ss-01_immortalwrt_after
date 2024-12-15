@@ -1,0 +1,4 @@
+git clone https://git.codelinaro.org/clo/qsdk/oss/system/openwrt-ipq-patches.git
+cp openwrt-ipq-patches/* immortalwrt/
+cd immortalwrt
+for patchfile in *.patch; do git apply --reject < "$patchfile"; done
