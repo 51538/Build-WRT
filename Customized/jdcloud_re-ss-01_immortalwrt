@@ -1,3 +1,4 @@
 sed -i '/nss_packages/d' immortalwrt/feeds.conf.default
-echo "src-git nss_packages https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x-wwan" >> immortalwrt/feeds.conf.default
+sed -i '/sqm_scripts_nss/d' immortalwrt/feeds.conf.default
+echo "src-git nss_packages https://github.com/qosmio/nss-packages.git;sqm-scripts-nss" >> immortalwrt/feeds.conf.default
 rm -f jdcloud_re-ss-01.config
