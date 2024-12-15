@@ -1,10 +1,11 @@
-git clone https://git.codelinaro.org/clo/qsdk/oss/system/openwrt-ipq-patches.git
-cp openwrt-ipq-patches/* immortalwrt/
 cd immortalwrt
-for patchfile in *.patch; do git apply --reject < "$patchfile"; done
 curl -s https://init.cooluc.com/openwrt/patch/generic-24.10/202-toolchain-gcc-add-support-for-GCC-15.patch | patch -p1
 cd-
 echo -e "\n# gcc 15" >> jdcloud_re-ss-01.config
 echo -e "CONFIG_DEVEL=y" >> jdcloud_re-ss-01.config
 echo -e "CONFIG_TOOLCHAINOPTS=y" >> jdcloud_re-ss-01.config
 echo -e "CONFIG_GCC_USE_VERSION_15=y\n" >> jdcloud_re-ss-01.config
+
+echo -e "# CONFIG_DEFAULT_kmod-qca-nss-ecm is not set" >> jdcloud_re-ss-01.config
+echo -e "# CONFIG_PACKAGE_kmod-qca-nss-ecm is not set" >> jdcloud_re-ss-01.config
+
