@@ -50,7 +50,16 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 7
           keep_minimum_runs: 1
-          #delete_workflow_pattern: Auto-Clean.yml
+
+      - name: Delete autogenetics
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 0
+          delete_run_by_conclusion_pattern: cancelled,failure,skipped
+          
   
   build:
     #runs-on: ${{ inputs.runs-on }}
