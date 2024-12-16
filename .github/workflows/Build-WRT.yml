@@ -129,9 +129,9 @@ jobs:
         ./transfer wss -s -p 16 --no-progress ./firmware/*.* 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-      uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.BUILD_DATE }}_${{ inputs.model }}_${{ env.BUILD_DIR }}
+        name: ${{ env.BUILD_DATE }}_${{ inputs.model }}_${{ env.BUILD_DIR }}_squashfs
         path: |
           ./firmware/*squashfs-sysupgrade*
           ./firmware/*squashfs-combined*
