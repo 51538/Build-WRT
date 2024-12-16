@@ -121,3 +121,20 @@ jobs:
       with:
         name: ${{ env.BUILD_DATE }}_${{ inputs.model }}_${{ env.BUILD_DIR }}
         path: ./firmware/*.*
+        retention-days: 30
+
+    - name: Upload firmware to Wenshushu
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer wss -s -p 16 --no-progress ./firmware/*.* 2>&1 | tee wetransfer.log
+        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
+        echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.BUILD_DATE }}_${{ inputs.model }}_${{ env.BUILD_DIR }}
+        path: |
+          ./firmware/*squashfs-sysupgrade*
+          ./firmware/*squashfs-combined*
+        if-no-files-found: ignore
+        retention-days: 30
+        
