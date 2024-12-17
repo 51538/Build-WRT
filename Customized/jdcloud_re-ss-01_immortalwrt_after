@@ -1,0 +1,8 @@
+cd immortalwrt
+./scripts/feeds clean && ./scripts/feeds update -a
+./scripts/feeds install -a -p passwall_packages -f
+./scripts/feeds install -a -p passwall -f
+./scripts/feeds install -a -p passwall2 -f
+./scripts/feeds install -a -p nss_packages -f
+./scripts/feeds install -a -p sqm_scripts_nss -f
+./scripts/feeds install -a
