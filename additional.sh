@@ -40,6 +40,11 @@ git clone -b js --single-branch https://github.com/papagaye744/luci-theme-design
 git clone https://github.com/kiddin9/openwrt-clouddrive2.git package/openwrt-clouddrive2
 sed -i 's/0.7.21/0.8.3/g' package/openwrt-clouddrive2/clouddrive2/Makefile
 
+rm -rf feeds/packages/libs/liburing
+git clone https://github.com/sbwml/feeds_packages_libs_liburing feeds/packages/libs/liburing
+rm -rf feeds/packages/net/samba4
+git clone https://github.com/sbwml/feeds_packages_net_samba4 feeds/packages/net/samba4
+
 #rm -rf feeds/packages/net/chinadns-ng
 #cp -rf feeds/passwall_packages/chinadns-ng/ feeds/packages/net/
 #rm -rf feeds/luci/applications/luci-app-passwall/
