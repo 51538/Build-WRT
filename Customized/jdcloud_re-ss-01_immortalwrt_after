@@ -1,3 +1,4 @@
+##[group]feeds update -a
 cd immortalwrt
 ./scripts/feeds clean && ./scripts/feeds update -a
 ./scripts/feeds install -a -p passwall_packages -f
@@ -7,3 +8,4 @@ cd immortalwrt
 ./scripts/feeds install -a -p sqm_scripts_nss -f
 ./scripts/feeds install -a
 rm -rf feeds/packages/net/geoview
+##[endgroup]
