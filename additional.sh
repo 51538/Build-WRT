@@ -15,8 +15,9 @@ echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main"
 #echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
 
 ./scripts/feeds clean && ./scripts/feeds update -a
-./scripts/feeds install -a -f -p passwall_packages
-./scripts/feeds install luci-app-passwall luci-app-passwall2
+./scripts/feeds install -a -p passwall_packages -f
+./scripts/feeds install -a -p passwall -f
+./scripts/feeds install -a -p passwall2 -f
 ./scripts/feeds install -a
 
 #run after ./scripts/feeds
