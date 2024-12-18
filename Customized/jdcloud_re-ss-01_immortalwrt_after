@@ -1,5 +1,6 @@
 echo "srart jdcloud_re-ss-01_immortalwrt_after"
 cd immortalwrt
+echo "src-git-full x https://github.com/x-wrt/com.x-wrt.git" >> "feeds.conf.default"
 ./scripts/feeds clean && ./scripts/feeds update -a
 ./scripts/feeds install -a -p passwall_packages -f
 ./scripts/feeds install -a -p passwall -f
@@ -8,4 +9,17 @@ cd immortalwrt
 ./scripts/feeds install -a -p sqm_scripts_nss -f
 ./scripts/feeds install -a
 rm -rf feeds/packages/net/geoview
+
+find feeds/x/luci-app-natflow-users -type f -exec sed -i 's/192.168.15/192.168.10/g' {} +
+sed -i '/natflow-qos/d' feeds/x/luci-app-natflow-users/Makefile
+sed -i '29,39d' feeds/x/luci-app-natflow-users/root/usr/share/luci/menu.d/luci-app-natflow-users.json
+rm feeds/x/luci-app-natflow-users/root/usr/share/ucitrack/luci-app-natflow-simple-qos.json
+rm feeds/x/luci-app-natflow-users/root/usr/share/ucitrack/luci-app-natflow-qos.json
+sed -i '5,8d' feeds/x/luci-app-natflow-users/root/usr/share/ucitrack/luci-app-natflow-users.json
+sed -i '/qos/d' feeds/x/luci-app-natflow-users/files/uci.defaults
+rm feeds/x/luci-app-natflow-users/htdocs/luci-static/resources/view/network/natflow-qos.js
+echo CONFIG_PACKAGE_natflow-hostacl=y >> jdcloud_re-ss-01.config
+echo CONFIG_PACKAGE_urllogger=y >> jdcloud_re-ss-01.config
+echo CONFIG_PACKAGE_luci-app-natflow-users=y >> jdcloud_re-ss-01.config
+
 echo "end jdcloud_re-ss-01_immortalwrt_after"
