@@ -163,5 +163,3 @@ jobs:
           ${{ env.BUILD_DIR }}/dl
           ${{ env.BUILD_DIR }}/tmp
         key: ${{ env.BUILD_DIR }}_${{ env.CPUTP }}-ccache
-        fail-on-cache-miss: false
-        
