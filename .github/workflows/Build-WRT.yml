@@ -151,15 +151,4 @@ jobs:
         curl -fsSL git.io/file-transfer | sh
         ./transfer wss -s -p 16 --no-progress ./firmware/*.* 2>&1 | tee Wenshushu.log
         echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | sed -n '1p')"
-        echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | awk 'NR==2')"
-
-    - name: Save Cached
-      id: cache-sve
-      uses: actions/cache/save@v4
-      with:
-         path: |
-           ${{ env.BUILD_DIR }}/build_dir
-           ${{ env.BUILD_DIR }}/staging_dir
-           ${{ env.BUILD_DIR }}/dl
-           ${{ env.BUILD_DIR }}/tmp
-        key: ${{ env.BUILD_DIR }}_${{ env.CPUTP }}-ccache        
+        echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | awk 'NR==2')"        
