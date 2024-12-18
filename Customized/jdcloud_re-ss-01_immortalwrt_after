@@ -18,6 +18,7 @@ rm feeds/x/luci-app-natflow-users/root/usr/share/ucitrack/luci-app-natflow-qos.j
 sed -i '5,8d' feeds/x/luci-app-natflow-users/root/usr/share/ucitrack/luci-app-natflow-users.json
 sed -i '/qos/d' feeds/x/luci-app-natflow-users/files/uci.defaults
 rm feeds/x/luci-app-natflow-users/htdocs/luci-static/resources/view/network/natflow-qos.js
+cd -
 echo CONFIG_PACKAGE_natflow-hostacl=y >> jdcloud_re-ss-01.config
 echo CONFIG_PACKAGE_urllogger=y >> jdcloud_re-ss-01.config
 echo CONFIG_PACKAGE_luci-app-natflow-users=y >> jdcloud_re-ss-01.config
