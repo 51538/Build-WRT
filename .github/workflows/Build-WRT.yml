@@ -118,6 +118,9 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
+    - name: Clone Source
+      run: git clone -b ${{ inputs.build_branch }} --single-branch https://github.com/${{ inputs.build_mod }}.git ${{ env.BUILD_DIR }}
+
     - name: Restore Cached
       id: cache-restore
       uses: actions/cache/restore@v4
@@ -134,7 +137,6 @@ jobs:
       run: |
         mv Customized/* ./ && rm -rf Customized
         mv deconfig/* ./ && rm -rf deconfig
-        git clone -b ${{ inputs.build_branch }} --single-branch https://github.com/${{ inputs.build_mod }}.git ${{ env.BUILD_DIR }}
         sed -i "s/192.168.10.1/${{ inputs.lan-ip }}/g"  999-customized-settings
         bash additional.sh && bash build.sh
 
