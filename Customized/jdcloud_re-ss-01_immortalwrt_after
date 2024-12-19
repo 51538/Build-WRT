@@ -8,3 +8,6 @@ cd immortalwrt
 ./scripts/feeds install -a -p sqm_scripts_nss -f
 ./scripts/feeds install -a
 rm -rf feeds/packages/net/geoview
+
+du -sh build_dir dl staging_dir tmp
+rm -rf build_dir dl staging_dir tmp
