@@ -8,6 +8,6 @@ cd immortalwrt
 ./scripts/feeds install -a -p sqm_scripts_nss -f
 ./scripts/feeds install -a
 rm -rf feeds/packages/net/geoview
-
+sed -i "s/default NSS_FIRMWARE_VERSION_11_4/default NSS_FIRMWARE_VERSION_12_5/g" feeds/nss-packages/firmware/nss-firmware/Makefile
 du -sh build_dir dl staging_dir tmp
 rm -rf build_dir dl staging_dir tmp
