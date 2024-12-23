@@ -4,14 +4,8 @@ sudo apt-get full-upgrade -y
 sudo apt-get install -y $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
 
 git clone --depth 1 https://github.com/ophub/amlogic-s9xxx-openwrt.git
-mv firmware amlogic-s9xxx-openwrt/openwrt-armvirt
-cd amlogic-s9xxx-openwrt
-cd openwrt-armvirt
-gzip -d *rootfs*
-tar -cvf rootfs.tar *rootfs* && rm -f *rootfs*.img
-gzip rootfs.tar
-cd -
-mkdir -p openwrt/tmp/6.6.62/s905x2/rootfs/lib/modules
-sudo ./remake -b s905x2 -k 6.6.1 -a true
-sudo mv openwrt/out ../firmware
+mv firmware/*rootfs* amlogic-s9xxx-openwrt/openwrt-armvirt
+cd amlogic-s9xxx-openwrt/openwrt-armvirt
+sudo ./remake -b s905l3a-cm311 -k 6.6.x
+sudo find . -type d -name "out" -exec sh -c 'mv "$1"/* ../firmware' sh {} \;
 exit 0
