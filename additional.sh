@@ -26,7 +26,7 @@ if [[ -f "${BUILD_MODEL}_${BUILD_DIR}_after" ]]; then
    bash ${BUILD_MODEL}_${BUILD_DIR}_after
 fi
 cd -
-
+rm -rf feeds/packages/net/geoview
 #OpenWrt golang latest version
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
