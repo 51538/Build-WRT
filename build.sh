@@ -54,6 +54,7 @@ cp -f $BASE_PATH/$BUILD_DIR/.config $FIRMWARE_DIR/123.config
 FILE_NUM=$(find "bin/targets" -type f -iname "*squashfs*" ! -path "*/packages/*" | grep -c "squashfs")
 
 if [ "$FILE_NUM" -eq 0 ]; then
+    cp $BASE_PATH/$BUILD_MODEL.config .config
     sed -i '6,$d' .config
     make defconfig
     make -j$(nproc)
