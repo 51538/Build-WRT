@@ -54,16 +54,11 @@ cp -f $BASE_PATH/$BUILD_DIR/.config $FIRMWARE_DIR/123.config
 FILE_NUM=$(find "bin/targets" -type f -iname "*squashfs*" ! -path "*/packages/*" | grep -c "squashfs")
 
 if [ "$FILE_NUM" -eq 0 ]; then
-    rm -rf .config
-    cat> .config <<EOF
-CONFIG_TARGET_${aa}=y
-CONFIG_TARGET_${aa}_${bb}=y
-CONFIG_TARGET_${aa}_${bb}_DEVICE_${BUILD_MODEL}=y
-EOF
-make defconfig
-make -j$(nproc)
-find "$TARGET_DIR" -type f \( -name "*.bin" -o -name "*.manifest" -o -name "*.buildinfo" -o -name "*squashfs*" \) -exec cp -f {} "$FIRMWARE_DIR/" \;
-zip -r $FIRMWARE_DIR/packages.zip bin/packages 
+    sed -i '6,$d' .config
+    make defconfig
+    make -j$(nproc)
+    find "$TARGET_DIR" -type f \( -name "*.bin" -o -name "*.manifest" -o -name "*.buildinfo" -o -name "*squashfs*" \) -exec cp -f {} "$FIRMWARE_DIR/" \;
+    zip -r $FIRMWARE_DIR/packages.zip bin/packages 
 fi
 ##### END OF 初始化一个标志变量 #####
 
