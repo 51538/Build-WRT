@@ -16,5 +16,3 @@ rm -rf build_dir dl staging_dir tmp
 git clone -b main_nss https://github.com/AgustinLorenzo/openwrt.git main_nss
 rm -rf package/kernel/mac80211
 cp -rf main_nss/package/kernel/mac80211 package/kernel/
-cat ~/jdcloud_re-ss-01_01.config >> ~/jdcloud_re-ss-01.config
-ls ~
