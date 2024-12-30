@@ -1,13 +1,20 @@
 cd immortalwrt
 
+sed -i '/nss_packages/d' feeds.conf.default
+echo "src-git nss_packages https://github.com/AgustinLorenzo/nss-packages.git;main_nss_wifi" >> "feeds.conf.default"
+
 ./scripts/feeds clean && ./scripts/feeds update -a
 ./scripts/feeds install -a -p passwall_packages -f
 ./scripts/feeds install -a -p passwall -f
 ./scripts/feeds install -a -p passwall2 -f
-./scripts/feeds install -a -p nss_packages -f
-./scripts/feeds install -a -p sqm_scripts_nss -f
 ./scripts/feeds install -a
 rm -rf feeds/packages/net/geoview
-sed -i "s/default NSS_FIRMWARE_VERSION_11_4/default NSS_FIRMWARE_VERSION_12_5/g" feeds/nss-packages/firmware/nss-firmware/Makefile
+sed -i "s/default NSS_FIRMWARE_VERSION_11_4/default NSS_FIRMWARE_VERSION_12_2/g" feeds/nss-packages/firmware/nss-firmware/Makefile
 du -sh build_dir dl staging_dir tmp
 rm -rf build_dir dl staging_dir tmp
+
+git clone -b main_nss https://github.com/AgustinLorenzo/openwrt.git main_nss
+rm -rf package/kernel/mac80211
+cp -rf main_nss/package/kernel/mac80211 package/kernel/
+cat ~/jdcloud_re-ss-01_01.config >> ~/jdcloud_re-ss-01.config
+ls ~
