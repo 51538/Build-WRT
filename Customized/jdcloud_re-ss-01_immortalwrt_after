@@ -9,7 +9,7 @@ echo "src-git nss_packages https://github.com/AgustinLorenzo/nss-packages.git;ma
 ./scripts/feeds install -a -p passwall2 -f
 ./scripts/feeds install -a
 rm -rf feeds/packages/net/geoview
-sed -i "s/default NSS_FIRMWARE_VERSION_11_4/default NSS_FIRMWARE_VERSION_12_2/g" feeds/nss-packages/firmware/nss-firmware/Makefile
+sed -i "s/default NSS_FIRMWARE_VERSION_11_4/default NSS_FIRMWARE_VERSION_12_2/g" feeds/nss_packages/firmware/nss-firmware/Makefile
 du -sh build_dir dl staging_dir tmp
 rm -rf build_dir dl staging_dir tmp
 
