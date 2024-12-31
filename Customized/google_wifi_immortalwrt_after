@@ -1,8 +1,3 @@
-rm -rf immortalwrt/feeds/packages/libs/liburing
-git clone https://github.com/sbwml/feeds_packages_libs_liburing immortalwrt/feeds/packages/libs/liburing
-rm -rf immortalwrt/feeds/packages/net/samba4
-git clone https://github.com/sbwml/feeds_packages_net_samba4 immortalwrt/feeds/packages/net/samba4
-
 sed -i '/FK20100010/d' build.sh
 sed -i "s/FK20100010/Google_WiFi/g" 999-customized-settings
 sed -i '/.key=/d' build.sh
