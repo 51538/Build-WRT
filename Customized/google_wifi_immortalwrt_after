@@ -4,5 +4,5 @@ sed -i '/.key=/d' build.sh
 sed -i '/.encryption=/d' build.sh
 sed -i '/etc\\\/shadow/d' build.sh
 
-sed -i '/vlmcsd=y/d' build.sh
+sed -i '/vlmcsd=y/d' google_wifi.config
 echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> google_wifi.config
