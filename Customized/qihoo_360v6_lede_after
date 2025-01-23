@@ -1,4 +1,5 @@
 git clone -b openwrt-23.05 --single-branch https://github.com/coolsnowwolf/luci.git
 cp -rf luci/themes/luci-theme-design lede/package/
 sed -i '/make/d' build.sh
-sed -i '40a make package/luci-theme-design/compile V=99' build.sh
+sed -i '40a make defconfig' build.sh
+sed -i '41a make package/luci-theme-design/compile V=99' build.sh
