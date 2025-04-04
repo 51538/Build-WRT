@@ -29,7 +29,7 @@ cd -
 rm -rf feeds/packages/net/geoview
 #OpenWrt golang latest version
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 # 更新luci-app-dockerman
 rm -rf feeds/luci/applications/luci-app-dockerman
 git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman
