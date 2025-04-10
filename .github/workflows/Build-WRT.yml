@@ -150,12 +150,12 @@ jobs:
         if-no-files-found: ignore
         retention-days: 30
 
-    - name: Upload firmware to Wenshushu
-      run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer wss -s -p 16 --no-progress ./firmware/*.* 2>&1 | tee Wenshushu.log
-        echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | sed -n '1p')"
-        echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | awk 'NR==2')"        
+#    - name: Upload firmware to Wenshushu
+#      run: |
+#        curl -fsSL git.io/file-transfer | sh
+#        ./transfer wss -s -p 16 --no-progress ./firmware/*.* 2>&1 | tee Wenshushu.log
+#        echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | sed -n '1p')"
+#        echo "::notice file=down_url::$(cat Wenshushu.log | grep https | cut -f3 -d" " | awk 'NR==2')"        
 
     - name: Save Cached
       id: cache-save
