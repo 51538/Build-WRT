@@ -1,3 +1,8 @@
 rm -rf tmp dl staging_dir build_dir .ccache
-git clone -b openwrt-23.05 --single-branch https://github.com/coolsnowwolf/luci.git
-cp -rf luci/themes/luci-theme-design immortalwrt/package/
+#git clone -b openwrt-23.05 --single-branch https://github.com/coolsnowwolf/luci.git
+#cp -rf luci/themes/luci-theme-design immortalwrt/package/
+
+sed -i '/FK20100010/d' build.sh
+sed -i '/.key=/d' build.sh
+sed -i '/.encryption=/d' build.sh
+sed -i '/etc\\\/shadow/d' build.sh
