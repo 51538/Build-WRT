@@ -35,8 +35,8 @@ rm -rf feeds/luci/applications/luci-app-dockerman
 git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman
 
 #添加自定义插件
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-git clone https://github.com/zyqfork/luci-theme-design.git package/luci-theme-design
+#git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+#git clone https://github.com/zyqfork/luci-theme-design.git package/luci-theme-design
 # 添加 clouddrive2 插件
 git clone https://github.com/kiddin9/openwrt-clouddrive2.git package/openwrt-clouddrive2
 sed -i 's/0.7.21/0.8.3/g' package/openwrt-clouddrive2/clouddrive2/Makefile
