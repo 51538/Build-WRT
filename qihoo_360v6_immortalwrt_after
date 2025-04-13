@@ -1,6 +1,8 @@
 rm -rf tmp dl staging_dir build_dir .ccache
 #git clone -b openwrt-23.05 --single-branch https://github.com/coolsnowwolf/luci.git
 #cp -rf luci/themes/luci-theme-design immortalwrt/package/
+git clone https://github.com/destan19/OpenAppFilter.git immortalwrt/package/OpenAppFilter
+echo "CONFIG_PACKAGE_luci-app-oaf=y" >>qihoo_360v6.config
 
 sed -i '/FK20100010/d' build.sh
 sed -i '/.key=/d' build.sh
