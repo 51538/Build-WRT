@@ -1,4 +1,4 @@
-name: Build WRT
+name: Build fanchmwrt
 run-name: ${{ inputs.model }}_${{ inputs.build_mod }}_${{ inputs.build_branch }}
 
 on:
