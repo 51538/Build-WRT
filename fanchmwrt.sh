@@ -2,7 +2,7 @@ git clone https://github.com/fanchmwrt/fanchmwrt.git
 cd fanchmwrt
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-cd ../deconfig/64.config .config
+cp ../deconfig/64.config .config
 make defconfig
 make download -j$(nproc)
 make -j$(nproc) || make -j1 V=s
