@@ -1,7 +1,9 @@
-git clone --depth=1 https://github.com/hanwckf/immortalwrt-mt798x.git
-cd immortalwrt-mt798x
+git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
+cd immortalwrt
+echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 cp ../deconfig/fur-602.config .config
 
 make defconfig
