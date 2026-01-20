@@ -1,5 +1,6 @@
-git clone -b openwrt-24.10 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
-cd immortalwrt
+#git clone -b openwrt-24.10 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
+git clone -b openwrt-24.10 --single-branch --filter=blob:none https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git
+cd immortalwrt-mt798x-rebase
 echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 ./scripts/feeds update -a
 ./scripts/feeds install -a
