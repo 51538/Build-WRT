@@ -1,14 +1,19 @@
 #git clone -b openwrt-24.10 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
-git clone https://github.com/x-wrt/x-wrt.git
-cd x-wrt
-echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
+git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/padavanonly/immortalwrt-mt798x-24.10 immortalwrt-mt798x-24.10
+cd immortalwrt-mt798x-24.10
+#echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
-cp ../deconfig/fur-602.config .config
+cp ../deconfig/q30pro.config .config
 
 make defconfig
 make download -j$(nproc)
+make -j$(nproc) || make -j1 V=s
+
+rm -rf .config
+cp ../deconfig/ax3000t.config .config
 make -j$(nproc) || make -j1 V=s
 
 TARGET_DIR=bin/targets
