@@ -12,6 +12,10 @@ make defconfig
 make download -j$(nproc)
 make -j$(nproc) || make -j1 V=s
 
+rm -rf .config
+cp ../deconfig/j30pro_imm2512.config .config
+make -j$(nproc) || make -j1 V=s
+
 TARGET_DIR=bin/targets
 FIRMWARE_DIR=../firmware
 \rm -rf "$FIRMWARE_DIR"
