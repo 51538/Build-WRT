@@ -6,8 +6,9 @@ cd Lienol
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
-src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main
-src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall.git;main
+echo "src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
+echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall.git;main" >> "feeds.conf.default"
+
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
