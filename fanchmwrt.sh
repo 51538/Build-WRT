@@ -2,7 +2,8 @@
 #git clone -b main --single-branch --filter=blob:none https://github.com/VIKINGYFY/immortalwrt.git VIKINGYFY
 #git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git openwrt-25.12
 git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/padavanonly/immortalwrt-mt798x-6.6.git immortalwrt-mt798x-6.6
-cd immortalwrt-mt798x-6.6
+git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/Yuzhii0718/immortalwrt-mt798x-6.6-padavanonly.git Yuzhii0718
+cd Yuzhii0718
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;dependabot/mihomo-alpha" >> "feeds.conf.default"
 
