@@ -1,9 +1,9 @@
 #git clone -b 25.12 --single-branch --filter=blob:none https://github.com/Lienol/openwrt.git Lienol
 #git clone -b main --single-branch --filter=blob:none https://github.com/VIKINGYFY/immortalwrt.git VIKINGYFY
-git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
+#git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
 #git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/padavanonly/immortalwrt-mt798x-6.6.git immortalwrt-mt798x-6.6
 #git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/Yuzhii0718/immortalwrt-mt798x-6.6-padavanonly.git Yuzhii0718
-#git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
+git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
 cd immortalwrt
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;dependabot/mihomo-alpha" >> "feeds.conf.default"
@@ -15,8 +15,8 @@ echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
-cp ../deconfig/j30pro_imm2512.config .config
-#cp ../deconfig/chasey-dev.config .config
+#cp ../deconfig/j30pro_imm2512.config .config
+cp ../deconfig/chasey-dev.config .config
 
 make defconfig
 make download -j$(nproc)
