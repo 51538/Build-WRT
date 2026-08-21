@@ -15,6 +15,7 @@ echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-liquid
 #cp ../deconfig/j30pro_imm2512.config .config
 cp ../deconfig/chasey-dev.config .config
 
