@@ -21,7 +21,8 @@ git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-au
 git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-liquid
 #cp ../deconfig/j30pro_imm2512.config .config
 #cp ../deconfig/chasey-dev.config .config
-cp ../deconfig/Baili.config .config
+#cp ../deconfig/Baili.config .config
+cp ../deconfig/fur-603.config .config
 
 make defconfig
 make download -j$(nproc)
