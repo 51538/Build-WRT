@@ -23,7 +23,8 @@ git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-l
 #cp ../deconfig/chasey-dev.config .config
 #cp ../deconfig/Baili.config .config
 #cp ../deconfig/fur-603.config .config
-cp ../deconfig/jdcloud_re-cp-03_Yuzhii0718 .config
+#cp ../deconfig/jdcloud_re-cp-03_Yuzhii0718 .config
+cp ../deconfig/fur-602_Yuzhii0718 .config
 
 make defconfig
 make download -j$(nproc)
