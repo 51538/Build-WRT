@@ -2,9 +2,11 @@
 #git clone -b main --single-branch --filter=blob:none https://github.com/VIKINGYFY/immortalwrt.git VIKINGYFY
 #git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
 #git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/padavanonly/immortalwrt-mt798x-6.6.git immortalwrt-mt798x-6.6
-git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/Yuzhii0718/immortalwrt-mt798x-6.6-padavanonly.git immortalwrt
+#git clone -b openwrt-24.10-6.6 --single-branch --filter=blob:none https://github.com/Yuzhii0718/immortalwrt-mt798x-6.6-padavanonly.git immortalwrt
 #git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
+git clone -b master --single-branch --filter=blob:none https://github.com/x-wrt/x-wrt.git immortalwrt
 cd immortalwrt
+
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;dependabot/mihomo-alpha" >> "feeds.conf.default"
 
@@ -24,7 +26,9 @@ git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-l
 #cp ../deconfig/Baili.config .config
 #cp ../deconfig/fur-603.config .config
 #cp ../deconfig/jdcloud_re-cp-03_Yuzhii0718 .config
-cp ../deconfig/fur-602_Yuzhii0718 .config
+#cp ../deconfig/fur-602_Yuzhii0718 .config
+cp ../deconfig/fur-602_wrt .config
+mv ../Customized/mt7981b-xiaomi-mi-router* target/linux/mediatek/dts
 
 make defconfig
 make download -j$(nproc)
