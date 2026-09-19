@@ -27,7 +27,7 @@ git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-l
 #cp ../deconfig/fur-603.config .config
 #cp ../deconfig/jdcloud_re-cp-03_Yuzhii0718 .config
 #cp ../deconfig/fur-602_Yuzhii0718 .config
-cp ../deconfig/fur-602_wrt .config
+cp ../deconfig/fur-602_xwrt .config
 mv ../Customized/mt7981b-xiaomi-mi-router* target/linux/mediatek/dts
 
 make defconfig
