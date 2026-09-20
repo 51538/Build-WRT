@@ -9,10 +9,10 @@
 / {
 	aliases {
 		serial0 = &uart0;
-		led-boot = &boot_led;
-		led-failsafe = &boot_led;
-		led-running = &running_led;
-		led-upgrade = &running_led;
+		led-boot = &led_status_yellow;
+		led-failsafe = &led_status_yellow;
+		led-running = &led_status_blue;
+		led-upgrade = &led_status_yellow;
 	};
 
 	chosen {
