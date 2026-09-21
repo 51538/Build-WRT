@@ -14,8 +14,8 @@ cd immortalwrt
 
 #echo "src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 #echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main" >> "feeds.conf.default"
-#sed -i '1i src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' feeds.conf.default
-#sed -i '1i src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main' feeds.conf.default
+sed -i '1i src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' feeds.conf.default
+sed -i '1i src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main' feeds.conf.default
 
 
 ./scripts/feeds update -a
@@ -33,7 +33,7 @@ git clone https://github.com/VizzleTF/luci-theme-footstrap.git package/luci-them
 #cp ../deconfig/fur-602_xwrt .config
 #mv ../Customized/mt7981b-xiaomi-mi-router* target/linux/mediatek/dts
 
-cp ../deconfig/padavanonly-baili.config .config
+cp ../deconfig/padavanonly-q30.config .config
 
 make defconfig
 make download -j$(nproc)
