@@ -14,8 +14,8 @@ cd immortalwrt
 
 #echo "src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 #echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main" >> "feeds.conf.default"
-sed -i '1i src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' feeds.conf.default
-sed -i '1i src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main' feeds.conf.default
+#sed -i '1i src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' feeds.conf.default
+#sed -i '1i src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main' feeds.conf.default
 
 
 ./scripts/feeds update -a
