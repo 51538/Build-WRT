@@ -5,8 +5,7 @@
 #git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
 #git clone -b master --single-branch --filter=blob:none https://github.com/x-wrt/x-wrt.git immortalwrt
 
-git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
-
+git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
 cd immortalwrt
 
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
@@ -33,7 +32,7 @@ git clone https://github.com/VizzleTF/luci-theme-footstrap.git package/luci-them
 #cp ../deconfig/fur-602_xwrt .config
 #mv ../Customized/mt7981b-xiaomi-mi-router* target/linux/mediatek/dts
 
-cp ../deconfig/chasey-dev.config .config
+cp ../deconfig/j30pro_imm2512.config .config
 
 make defconfig
 make download -j$(nproc)
