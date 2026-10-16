@@ -32,7 +32,7 @@ git clone https://github.com/VizzleTF/luci-theme-footstrap.git package/luci-them
 #cp ../deconfig/fur-602_xwrt .config
 #mv ../Customized/mt7981b-xiaomi-mi-router* target/linux/mediatek/dts
 
-cp ../deconfig/j30pro_imm2512.config .config
+cp ../deconfig/q30pro_imm_master.config .config
 
 make defconfig
 make download -j$(nproc)
