@@ -5,7 +5,7 @@
 #git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
 #git clone -b master --single-branch --filter=blob:none https://github.com/x-wrt/x-wrt.git immortalwrt
 
-git clone -b master --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
+git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
 cd immortalwrt
 
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
