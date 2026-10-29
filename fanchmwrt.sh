@@ -23,7 +23,8 @@ echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-liquid
 git clone https://github.com/VizzleTF/luci-theme-footstrap.git package/luci-theme-footstrap
-git clone https://github.com/QiuSimons/luci-app-honk package/honk
+#git clone https://github.com/QiuSimons/luci-app-honk package/honk
+git clone https://github.com/kenzok8/openwrt-honk.git package/honk
 
 #cp ../deconfig/j30pro_imm2512.config .config
 #cp ../deconfig/chasey-dev.config .config
