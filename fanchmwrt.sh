@@ -5,26 +5,26 @@
 #git clone -b 25.12 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git immortalwrt
 #git clone -b master --single-branch --filter=blob:none https://github.com/x-wrt/x-wrt.git immortalwrt
 
-git clone -b openwrt-25.12 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt.git immortalwrt
+git clone https://github.com/immortalwrt/immortalwrt.git
 cd immortalwrt
+git apply ../deconfig/honor-fur-602-mainline.patch
 
 #echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;dependabot/mihomo-alpha" >> "feeds.conf.default"
 
-echo "src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
-echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main" >> "feeds.conf.default"
+#echo "src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
+#echo "src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main" >> "feeds.conf.default"
 #sed -i '1i src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall2.git;main' feeds.conf.default
 #sed -i '1i src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main' feeds.conf.default
 
 
 ./scripts/feeds update -a
-./scripts/feeds install -a -f -p passwall_packages
+#./scripts/feeds install -a -f -p passwall_packages
 ./scripts/feeds install -a 
 git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
 git clone https://github.com/xylz0928/luci-theme-liquid.git package/luci-theme-liquid
 git clone https://github.com/VizzleTF/luci-theme-footstrap.git package/luci-theme-footstrap
 #git clone https://github.com/QiuSimons/luci-app-honk package/honk
-git clone https://github.com/kenzok8/openwrt-honk.git package/honk
 
 #cp ../deconfig/j30pro_imm2512.config .config
 #cp ../deconfig/chasey-dev.config .config
@@ -34,7 +34,7 @@ git clone https://github.com/kenzok8/openwrt-honk.git package/honk
 #cp ../deconfig/fur-602_xwrt .config
 #mv ../Customized/mt7981b-xiaomi-mi-router* target/linux/mediatek/dts
 
-cp ../deconfig/q30pro_imm_master.config .config
+cp ../deconfig/fur602.config261123 .config
 
 make defconfig
 make download -j$(nproc)
